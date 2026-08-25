@@ -55,6 +55,8 @@ Depois de instalar, **reinicie o Claude Code** para as skills serem carregadas.
 |---|---|
 | [`grill-me`](skills/grill-me/) | Interroga você sobre objetivo, restrições, decisões e definição de pronto **antes** de escrever código. Fecha com um brief confirmado. |
 | [`verification-before-completion`](skills/verification-before-completion/) | Proíbe dizer "pronto" sem evidência: roda os testes, confere cada requisito e cola a saída real. |
+| [`security-checklist`](skills/security-checklist/) | 18 verificações de segurança antes do deploy: segredos, RLS, auth, mass assignment, rate limit, SQLi, uploads, vazamento de dados e headers. |
+| [`pr-review`](skills/pr-review/) | Revisa PR/diff por camadas (correção → segurança → design → testes → legibilidade), verifica cada achado e classifica por severidade. |
 | [`webapp-testing`](skills/webapp-testing/) | Abre o navegador, clica, preenche formulário, lê o console e tira screenshot. Verifica em vez de perguntar "funcionou?". |
 | [`web-quality-audit`](skills/web-quality-audit/) | Audita performance, Core Web Vitals, acessibilidade, SEO técnico e mobile. Relatório priorizado por impacto. |
 | [`fastapi-endpoints`](skills/fastapi-endpoints/) | Convenções e armadilhas de rotas FastAPI: routers, `response_model`, status codes, erros, async vs sync, paginação. |

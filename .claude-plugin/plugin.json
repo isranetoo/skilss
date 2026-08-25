@@ -1,7 +1,7 @@
 {
   "name": "dev-skills",
-  "description": "Disciplina de trabalho e qualidade para o Claude Code: grill-me (interroga antes de codar), verification-before-completion (proibe dizer pronto sem evidencia), webapp-testing (verifica no navegador), web-quality-audit (performance, SEO, acessibilidade, Core Web Vitals) e fastapi-endpoints (convencoes de rotas).",
-  "version": "1.0.0",
+  "description": "Disciplina de trabalho e qualidade para o Claude Code: grill-me (interroga antes de codar), verification-before-completion (proibe dizer pronto sem evidencia), security-checklist (18 verificacoes de seguranca), pr-review (revisa diff por camadas e severidade), webapp-testing (verifica no navegador), web-quality-audit (performance, SEO, acessibilidade, Core Web Vitals) e fastapi-endpoints (convencoes de rotas).",
+  "version": "1.2.0",
   "author": {
     "name": "Israel Antunes Neto",
     "url": "https://github.com/isranetoo"

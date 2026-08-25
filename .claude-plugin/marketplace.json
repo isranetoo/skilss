@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Skills de engenharia e qualidade para o Claude Code",
-    "version": "1.0.0"
+    "version": "1.2.0"
   },
   "plugins": [
     {
       "name": "dev-skills",
       "source": "./",
       "description": "Disciplina de trabalho e qualidade: interrogatorio antes de codar, verificacao antes de dizer pronto, teste real no navegador, auditoria de performance/SEO/acessibilidade e convencoes de endpoints FastAPI.",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "author": {
         "name": "Israel Antunes Neto"
       },
