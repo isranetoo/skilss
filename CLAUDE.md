@@ -19,7 +19,11 @@ dentro do projeto de outra pessoa.
 skilss/
 ├── CLAUDE.md                  # este arquivo
 ├── README.md                  # catálogo das skills + como instalar
-├── install.ps1 / install.sh   # copia skills para ~/.claude/skills ou um projeto
+├── .claude-plugin/
+│   ├── marketplace.json       # torna o repo um marketplace (/plugin marketplace add)
+│   └── plugin.json            # manifesto do plugin "dev-skills" (raiz = plugin)
+├── get.ps1 / get.sh           # instalador remoto (baixa do GitHub, sem clone)
+├── install.ps1 / install.sh   # instalador local (a partir do clone)
 ├── templates/
 │   └── SKILL.template.md      # ponto de partida para uma skill nova
 └── skills/
@@ -31,6 +35,23 @@ skilss/
 ```
 
 Uma pasta por skill dentro de `skills/`. O nome da pasta **é** o nome da skill.
+
+### Duas formas de distribuição, uma só pasta
+
+O repo é ao mesmo tempo um **marketplace de plugin** e uma **fonte de skills avulsas**, e as duas
+leem exatamente a mesma `skills/`:
+
+| Via | Comando | Granularidade |
+|---|---|---|
+| Marketplace | `/plugin marketplace add isranetoo/skilss` + `/plugin install dev-skills@isranetoo-skills` | pacote inteiro |
+| Instalador remoto | `irm .../get.ps1 \| iex` | skill a skill |
+
+Consequência ao adicionar uma skill: basta criar a pasta em `skills/`. **Não** é preciso registrar
+nada no `plugin.json` — o Claude Code descobre as skills do plugin automaticamente. Só suba a
+`version` no `plugin.json` e no `marketplace.json` quando publicar mudanças relevantes.
+
+Arquivos de componente de plugin (`skills/`, `commands/`, `agents/`) ficam na **raiz** do repo,
+nunca dentro de `.claude-plugin/` — lá vão só os dois manifestos JSON.
 
 ## Anatomia de uma SKILL.md
 
@@ -110,21 +131,30 @@ se a `description` precisa de "e também" para cobrir tudo, divida.
 
 ## Instalando em outro lugar
 
-Global (vale para todos os projetos):
+**Marketplace** (pacote inteiro, dentro do Claude Code):
 
-```powershell
-.\install.ps1 -Global                    # todas as skills
-.\install.ps1 -Global -Skills fastapi-endpoints,commit-helper
+```
+/plugin marketplace add isranetoo/skilss
+/plugin install dev-skills@isranetoo-skills
+/plugin marketplace update isranetoo-skills     # puxa mudanças depois
 ```
 
-Em um projeto específico:
+**Instalador remoto** (skill avulsa, sem clone):
 
 ```powershell
-.\install.ps1 -Target C:\caminho\do\projeto
+$env:SKILLS='grill-me'; irm https://raw.githubusercontent.com/isranetoo/skilss/main/get.ps1 | iex
 ```
 
-O script copia `skills/<nome>` para `<destino>/.claude/skills/<nome>`. Depois disso o repo não
-é mais consultado — por isso a exigência de skills autocontidas.
+**A partir do clone** (quando você está editando as skills):
+
+```powershell
+.\install.ps1 -Global                          # todas
+.\install.ps1 -Global -Skills grill-me         # só uma
+.\install.ps1 -Target C:\caminho\do\projeto    # em um projeto
+```
+
+Nos dois últimos casos o script copia `skills/<nome>` para `<destino>/.claude/skills/<nome>` e o
+repo não é mais consultado — por isso a exigência de skills autocontidas.
 
 ## Convenções de commit
 

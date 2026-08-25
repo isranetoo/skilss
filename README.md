@@ -3,7 +3,22 @@
 Biblioteca pessoal de **Agent Skills** para o Claude Code. Cada skill é autocontida: instale em
 qualquer máquina com um comando, sem clonar o repositório.
 
-## Instalação em 1 comando
+## Instalação via marketplace (recomendado)
+
+Dentro do Claude Code, em qualquer computador:
+
+```
+/plugin marketplace add isranetoo/skilss
+/plugin install dev-skills@isranetoo-skills
+```
+
+As skills ficam disponíveis na hora, e `/plugin marketplace update isranetoo-skills` traz as
+novidades depois. Para remover: `/plugin uninstall dev-skills@isranetoo-skills`.
+
+Esse caminho instala **o pacote inteiro**. Se quiser escolher skill por skill, use o instalador
+abaixo.
+
+## Instalação em 1 comando (skill avulsa)
 
 **Windows (PowerShell)** — todas as skills, global (`~/.claude/skills`):
 
